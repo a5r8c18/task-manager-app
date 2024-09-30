@@ -1,1 +1,24 @@
-<p>task-list works!</p>
+<div class="task-list-container">
+    <h1>Listar tareas</h1>
+    <div class="filters">
+        <label>Filtros:</label>
+        <button (click)="filterTasks('all')">Todas</button>
+        <button (click)="filterTasks('completed')">Completadas</button>
+        <button (click)="filterTasks('pending')">Pendientes</button>
+    </div>
+    <div class="task-list">
+        <div *ngFor="let task of tasks" class="task-item">
+            <h3>{{ task.name }}</h3>
+            <p>Fecha límite: {{ task.deadline | date }}</p>
+            <p>Estado: {{ task.completed ? 'Completada' : 'Pendiente' }}</p>
+            <div class="associated-people">
+                <h4>Personas asociadas:</h4>
+                <ul>
+                    <li *ngFor="let person of task.people">
+                        {{ person.fullName }} (Edad: {{ person.age }}) - Habilidades: {{ person.skills.join(', ') }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

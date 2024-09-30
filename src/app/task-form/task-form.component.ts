@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { TaskService } from '../task.service';
 
@@ -6,9 +6,9 @@ import { TaskService } from '../task.service';
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.css'],
-  standalone: true,
+ 
 })
-export class TaskFormComponent {
+export class TaskFormComponent implements OnInit {
   taskForm: FormGroup;
 
   constructor(private fb: FormBuilder, private taskService: TaskService) {
@@ -17,6 +17,13 @@ export class TaskFormComponent {
       deadline: ['', Validators.required],
       completed: [false],
       people: this.fb.array([])
+    });
+  }
+  ngOnInit() {
+    this.taskForm = this.fb.group({
+      // Define tus controles aquí
+      title: ['', Validators.required],
+      description: ['']
     });
   }
 

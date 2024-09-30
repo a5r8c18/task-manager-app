@@ -7,7 +7,7 @@ import { Task } from '../models/task.model';
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],
-  standalone: true,
+  
 })
 export class TaskListComponent {
   tasks$: Observable<Task[]>;
